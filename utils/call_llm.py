@@ -4,6 +4,7 @@ import logging
 import json
 from datetime import datetime
 import requests
+from llm import gimini_api
 
 # Configure logging
 log_directory = os.getenv("LOG_DIR", "logs")
@@ -57,7 +58,7 @@ def call_llm(prompt: str, use_cache: bool = True) -> str:
 
     # You can comment the previous line and use the AI Studio key instead:
     client = genai.Client(
-        api_key=os.getenv("GEMINI_API_KEY", "AIzaSyC25zvvpPIG839n74ZamIbXwM68iaEnx0Y"),
+        api_key=os.getenv("GEMINI_API_KEY", gimini_api),
     )
     model = os.getenv("GEMINI_MODEL", "gemini-2.5-pro-exp-03-25")
     # model = os.getenv("GEMINI_MODEL", "gemini-2.5-flash-preview-04-17")
